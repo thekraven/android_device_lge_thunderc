@@ -65,7 +65,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/thunderc/files/common/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     device/lge/thunderc/files/common/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/thunder_keypad.kl \
-    device/lge/thunderc/files/common/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/thunderc_keypad.kl \	
+    device/lge/thunderc/files/common/usr/keylayout/thunder_keypad.kl:system/usr/keylayout/thunderc_keypad.kl \
     device/lge/thunderc/files/handset-keypress:system/bin/handset-keypress \
     vendor/lge/thunderc/proprietary/system/usr/keychars/thunder_keypad.kcm.bin:system/usr/keychars/thunder_keypad.kcm.bin \
     vendor/lge/thunderc/proprietary/system/usr/keychars/thunder_keypad.kcm.bin:system/usr/keychars/thunderc_keypad.kcm.bin \	
