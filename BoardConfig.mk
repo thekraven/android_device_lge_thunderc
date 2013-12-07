@@ -1,7 +1,8 @@
 -include vendor/lge/thunderc/BoardConfigVendor.mk
 -include device/lge/msm7x27-common/BoardConfigCommon.mk
 
-TARGET_KERNEL_CONFIG := aaathunderc-test1_defconfig
+#TARGET_KERNEL_CONFIG := aaathunderc-test1_defconfig
+TARGET_KERNEL_CONFIG := thunderc-test_defconfig
 BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=thunderc
 COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"lge.reboot"' -DBOARD_CHARGING_CMDLINE_VALUE='"pwroff"'
 TARGET_BOOTLOADER_BOARD_NAME := thunderc
