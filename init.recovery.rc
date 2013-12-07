@@ -45,7 +45,7 @@ on property:ro.debuggable=1
     write /sys/class/android_usb/android0/functions mtp,adb
     #write /sys/class/android_usb/android0/enable 1
     write /sys/class/android_usb/android0/iManufacturer LGE
-    write /sys/class/android_usb/android0/iProduct p500
+    write /sys/class/android_usb/android0/iProduct thunderc
     write /sys/class/android_usb/android0/iSerial $ro.serialno
     #start adbd
     setprop service.adb.root 1
