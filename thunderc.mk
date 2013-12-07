@@ -36,7 +36,7 @@ PRODUCT_COPY_FILES += device/lge/thunderc/configs/Generic.kl:system/usr/keylayou
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.thunderc.rc:root/init.thunderc.rc \
     $(LOCAL_PATH)/ueventd.thunderc.rc:root/ueventd.thunderc.rc \
-	$(LOCAL_PATH)/fstab.thunderc:root/fstab.thunderc
+#    $(LOCAL_PATH)/fstab.thunderc:root/fstab.thunderc
 	
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/checkbootreason:root/sbin/checkbootreason 
 PRODUCT_COPY_FILES += \
@@ -70,12 +70,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # Live wallpapers
-PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
+#PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+#PRODUCT_PACKAGES += \
+#    LiveWallpapers \
+#    LiveWallpapersPicker \
+#    VisualizationWallpapers \
+#    librs_jni
 
 # Full-featured build of the Open-Source
 #$(call inherit-product, build/target/product/full.mk)
