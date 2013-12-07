@@ -6,7 +6,8 @@ BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=t
 COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"lge.reboot"' -DBOARD_CHARGING_CMDLINE_VALUE='"pwroff"'
 TARGET_BOOTLOADER_BOARD_NAME := thunderc
 TARGET_OTA_ASSERT_DEVICE := thunderc,LS670,VM670,thunderc_LS670,thunderc_VM670
-TARGET_RECOVERY_FSTAB := device/lge/thunderc/fstab.thunderc
+#TARGET_RECOVERY_FSTAB := device/lge/thunderc/fstab.thunderc
+TARGET_RECOVERY_FSTAB := device/lge/thunderc/recovery.fstab
 
 #TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 #BOARD_HAS_NO_SELECT_BUTTON := true
