@@ -36,7 +36,7 @@ PRODUCT_COPY_FILES += device/lge/thunderc/configs/Generic.kl:system/usr/keylayou
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.thunderc.rc:root/init.thunderc.rc \
     $(LOCAL_PATH)/ueventd.thunderc.rc:root/ueventd.thunderc.rc \
-#    $(LOCAL_PATH)/fstab.thunderc:root/fstab.thunderc
+    $(LOCAL_PATH)/fstab.thunderc:root/fstab.thunderc
 	
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/checkbootreason:root/sbin/checkbootreason 
 PRODUCT_COPY_FILES += \
