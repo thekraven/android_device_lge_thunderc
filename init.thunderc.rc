@@ -19,8 +19,17 @@ on property:dev.bootcomplete=1
     stop dhcp-service
     start dhcp-service
 	
-on fs 
-   mount_all /fstab.thunderc
+on fs
+#   mount_all /fstab.thunderc
+
+# mount mtd partitions
+    # Mount /system rw first to give the filesystem a chance to save a checkpoint
+    mount yaffs2 mtd@system /system
+    mount yaffs2 mtd@system /system ro remount
+    mount yaffs2 mtd@userdata /data nosuid nodev
+    mount yaffs2 mtd@cache /cache nosuid nodev
+
+
 	
 on boot
 
