@@ -1,5 +1,5 @@
-persist.mvpdm.ProxyServerAddr=68.28.31.1
-persist.mvpdm.ProxyServerIp=80
+#persist.mvpdm.ProxyServerAddr=68.28.31.1
+#persist.mvpdm.ProxyServerIp=80
 ro.lge.proximity.delay=100
 ro.ril.def.preferred.network=4
 ro.telephony.default_network=4
@@ -29,14 +29,19 @@ mobiledata.interfaces=rmnet0,rmnet1,rmnet2
 ro.bt.bdaddr_path=/data/misc/bd_addr
 
 # Wifi
-interfacewifi.interface=wlan0
-wifi.supplicant_scan_interval=180
+#wifi.interface=wlan0
+#wifi.supplicant_scan_interval=180
 #wifi.ap.interface=athap0
 # See also: init.qcom.usb.rc and init.qcom.post_boot.sh
 persist.sys.usb.config=mass_storage,adb
 
-# Enable dithering (always)
-persist.sys.use_dithering=2
+# System and Misc.
+ro.tether.denied=false
+sys.checkfs.fat=false
+
+# A-GPS
+ro.ril.def.agps.mode=2
+ro.ril.def.agps.feature=1
 
 # Force use of GPU on 2D rendering
 # persist.sys.force_hw_ui=true
@@ -45,31 +50,74 @@ ro.opengles.version=131072
 
 ro.sf.lcd_density=160
 
-# Qualcomm
-debug.qctwa.statusbar=1
-debug.qctwa.preservebuf=1
-com.qc.hardware=true
-debug.enabletr=false
 
 # dalvik options
-dalvik.vm.checkjni=0
+dalvik.vm.checkjni=false
 dalvik.vm.dexopt-data-only=1
-dalvik.vm.dexopt-flags=m=y
-dalvik.vm.execution-mode=int:jit
+dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
 dalvik.vm.heapstartsize=5m
 dalvik.vm.heapgrowthlimit=36m
 dalvik.vm.heapsize=64m
-dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heaptargetutilization=0.25
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=2m
-dalvik.vm.lockprof.threshold=500
-dalvik.vm.verify-bytecode=false
-ro.com.google.networklocation=1 
-ro.com.google.locationfeatures=1
+
+
 ro.cdma.voicemail.number=mine
 ro.setupwizard.enable_bypass=1
 gsm.sim.operator.iso-country=us
 gsm.operator.iso-country=us
-qemu.sf.lcd_density=160
-ro.sf.hwrotation=0
-ro.sf.lcd_density=160
+
+# V6 SuperCharger settings
+ro.ril.hsxpa=3
+ro.ril.gprsclass=12
+ro.ril.hep=1
+ro.ril.enable.dtm=1
+ro.ril.hsdpa.category=28
+ro.ril.enable.a53=1
+ro.ril.enable.3g.prefix=1
+ro.ril.htcmaskw1.bitmask=4294967295
+ro.ril.htcmaskw1=14449
+ro.ril.hsupa.category=9
+
+ #From CAI
+debug.performance.tuning=1
+video.accelerate.hw=1
+# Increase battery and longer standby time with deeper sleep
+pm.sleep_mode=1
+ro.ril.disable.power.collapse=0
+# More accurate touch
+movfilter=40
+move hyst=0
+# Faster transfer rate for net connections
+net.tcp.buffersize.default=4096,87380,256960,4096, 16384,256960
+net.tcp.buffersize.wifi=4096,87380,256960,4096,163 84,256960
+# store launcher in memory - so that when you switch back to home it loads faster 
+ro.HOME_APP_ADJ=1
+#Improve Scrolling Build.prop Tweak
+ro.max.fling_velocity=4000
+# Disable strict mode flash on display 
+persist.sys.strictmode.visual=false
+#Disable_ADB_Notification_Icon
+persist.adb.notify=0
+dalvik.vm.execution-mode=int:jit
+windowsmgr.max_events_per_sec=150
+ro.config.vc_call_vol_steps=15
+# improve image and video quality (when taking pics and vids from cam and showing them in gallery)
+ro.media.enc.jpeg.quality=100 
+ro.media.dec.jpeg.memcap=8000000 
+ro.media.enc.hprof.vid.bps=8000000
+ro.media.enc.file.format       = 3gp,mp4 
+ro.media.enc.vid.codec         = m4v,h263
+ro.media.enc.vid.h263.width    = 176,640 
+ro.media.enc.vid.h263.height   = 144,480 
+ro.media.enc.vid.h263.bps      = 64000,1600000 
+ro.media.enc.vid.h263.fps      = 1,30 
+ro.media.enc.vid.m4v.width     = 176,640 
+ro.media.enc.vid.m4v.height    = 144,480 
+ro.media.enc.vid.m4v.bps       = 64000,1600000 
+ro.media.enc.vid.m4v.fps       = 1,30 
+ro.media.dec.aud.wma.enabled=1 
+ro.media.dec.vid.wmv.enabled=1
+
+

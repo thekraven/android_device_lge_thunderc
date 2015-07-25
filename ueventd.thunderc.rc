@@ -1,5 +1,5 @@
 # the DIAG device node is world writable/readable.
-/dev/diag                 0666   root       root
+/dev/diag                 0660   system     qcom_diag
 
 # allow wpa_supplicant access to rfkill dev
 /dev/rfkill               0660   wifi       wifi
@@ -95,7 +95,7 @@
 /dev/msm_preproc_ctl      0660  system       audio
 /dev/msm_a2dp_in          0640  system       audio
 /dev/msm_amrnb_in         0640  system       audio
-/sys/devices/virtual/usb_composite/*   enable      0664  root   system
+#/sys/devices/virtual/usb_composite/*   enable      0664  root   system
 
 # Non-root permission qmuxd (QCT solution 00481665)
 /dev/smd7                 0640  radio        radio

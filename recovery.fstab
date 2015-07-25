@@ -1,11 +1,14 @@
-# mount point	fstype    device    	[device2]
+# http://source.android.com/devices/tech/storage/index.html
+#<src>                        <mnt_point>        <type>        <mnt_flags and options>        <fs_mgr_flags>
 
-/boot       mtd         boot
-/cache      yaffs2      cache
-/data       yaffs2      userdata
-/misc       mtd         misc
-/recovery   mtd         recovery
-/sdcard     vfat        /dev/block/mmcblk0p1        /dev/block/mmcblk0
-/system     yaffs2      system
-#/sd-ext     ext4        /dev/block/mmcblk0p2
-/sd-ext     auto       /dev/block/mmcblk0p2 
+system                        /system                yaffs2        ro,remount                length=166199296,wait
+boot                        /boot                mtd        defaults                length=7340032
+cache                        /cache                yaffs2        nosuid,nodev                length=130154496,wait
+userdata                /data                yaffs2        nosuid,nodev                length=172883968,wait
+misc                        /misc                mtd        defaults                length=524288
+recovery                /recovery        mtd        defaults                length=7340032
+/dev/block/mmcblk0p1 /sdcard auto defaults recoveryonly
+/dev/block/mmcblk0p2 /sd-ext auto defaults recoveryonly
+
+/devices/platform/msm_sdcc.1/mmc_host/mmc0        /storage/sdcard0        auto        defaults        voldmanaged=sdcard:auto
+
