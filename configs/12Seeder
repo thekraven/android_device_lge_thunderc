@@ -1,0 +1,8 @@
+#!/system/bin/sh
+#Script to initiate rngd at boot by Ryuinferno @ XDA 2012
+
+mount -o remount,rw -t auto /data
+rngd
+sleep 2
+echo -8 > /proc/$(pgrep rngd)/oom_adj
+renice +8 rngd

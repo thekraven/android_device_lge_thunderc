@@ -1,19 +1,26 @@
 # inherit qcom init
 import init.qcom.rc
 
-on early-boot
-    exec /sbin/chargerlogo
+#on early-boot
+#    exec /sbin/chargerlogo
 	
-on init
-    # Add permissions for camera access
-    chmod 0666 /dev/msm_camera/config0
-    chmod 0666 /dev/msm_camera/control0
-    chmod 0666 /dev/msm_camera/frame0
-    chmod 0666 /dev/msm_camera/pic0	
+on early-init
+    mkdir /storage 0755 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard0 /sdcard
+    export EXTERNAL_STORAGE /storage/sdcard0
+
+service dhcp-service /system/bin/netcfg wlan0 dhcp
+    class main
+    oneshot
+
+on property:dev.bootcomplete=1
+    stop dhcp-service
+    start dhcp-service
+	
 	
 on boot
-    mkdir /data/radio 0770 radio radio
-    chmod 2770 /data/radio
 
     ## VIBRATOR
     chmod 0660 /sys/class/timed_output/vibrator/amp
@@ -31,56 +38,35 @@ on boot
     chmod 0664 /sys/class/leds/lcd-backlight/alc
     chown system system /sys/devices/platform/mddi_hitachi_hvga.10/lcd_onoff
     chmod 0664 /sys/devices/platform/mddi_hitachi_hvga.10/lcd_onoff
+
 	
-	    # allow interfaces to get IPv6 address when tethering is enabled
-    write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
 	
-on fs
-    # framebuffer permission for copybit
-    chmod 0666 /dev/graphics/fb0	
-	
-on post-fs
+#on post-fs
+#	chmod 0771 /cache
 
-    # nv
-    mkdir /data/nv
-    chown system system /data/nv
-    chmod 0711 /data/nv
-	chmod 0771 /cache
+#service chargerlogo /charger
+#    class charger
+#    user root
 
-    # wifi
-    chmod 0777 /data/misc/wifi/config_mac
-    mkdir /data/audioprop 0777 system system
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    setprop wifi.supplicant_scan_interval 20
-    setprop wifi.interface wlan0
-    mkdir /data/misc/dhcp 0777 system system	
-
-service chargerlogo /charger
-    class charger
-    user root
-
-on property:init.svc.chargerlogo=running
-    setprop sys.usb.config adb
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave	
+#on property:init.svc.chargerlogo=running
+#    setprop sys.usb.config adb
+#    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave	
 	
 service ami304d /system/bin/ami304d
     class main
     user compass
     group system
 	
-service qcom-sh /system/bin/sh /init.qcom.sh
-    class core
+## CHARGER ##
+service charger /sbin/checkbootreason
+    class charger
     user root
+    group root
     oneshot
 
-service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
-    class main
-    user root
-    disabled
-    oneshot
+on property:init.svc.charger=running
+    setprop sys.usb.config adb
+	
+	
 
-on property:init.svc.bootanim=stopped
-    start qcom-post-boot
 
